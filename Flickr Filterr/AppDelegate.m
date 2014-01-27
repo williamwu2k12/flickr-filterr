@@ -6,15 +6,23 @@
 //  Copyright (c) 2013 William Wu. All rights reserved.
 //
 
-#import "FFAppDelegate.h"
+#import "AppDelegate.h"
+#import "SearchViewController.h"
+#import "DetailViewController.h"
 
-@implementation FFAppDelegate
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window setBackgroundColor: [UIColor whiteColor]];
+    
+    // initialize singleton view controllers and set to load main on launch
+    self.mainViewController = [[SearchViewController alloc] init];
+    self.filterViewController = [[DetailViewController alloc] init];
+    [self.window setRootViewController: self.mainViewController];
+
     [self.window makeKeyAndVisible];
     return YES;
 }
